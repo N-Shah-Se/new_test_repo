@@ -104,7 +104,7 @@ jobs:
       - uses: returntocorp/semgrep-action@v1
         with:
           config: >- # more at semgrep.dev/explore
-            $ semgrep --config "p/default" && semgrep ci --sarif --output=semgrep.sarif
+            semgrep --config "p/default" && semgrep ci --sarif --output=semgrep.sarif
           
           # == Optional settings in the `with:` block
 
