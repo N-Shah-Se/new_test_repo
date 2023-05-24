@@ -25,9 +25,11 @@ jobs:
     steps:
       # Checkout project source
       - uses: actions/checkout@v3
+      - name: Create SARIF file
+        uses: github/codeql-action/create-sarif@v2
         with:
-          generateSarif: "1"
-      - run: semgrep --config "p/default" && semgrep ci --sarif --output=semgrep.sarif 
+          sarif_file: semgrep.sarif
+      - run: semgrep --config "p/default" && semgrep ci --sarif --output=semgrep.sarif
       # Upload SARIF file generated in previous step
       - name: Upload SARIF file
         uses: github/codeql-action/upload-sarif@v2
