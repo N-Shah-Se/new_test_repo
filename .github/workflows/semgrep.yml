@@ -101,9 +101,8 @@ jobs:
             wget -O .semgrepignore https://raw.githubusercontent.com/returntocorp/semgrep/develop/cli/src/semgrep/templates/.semgrepignore
           fi
           echo semgrep.sarif >> .semgrepignore
-      - uses: returntocorp/semgrep-action@v1
+      - uses: returntocorp/semgrep-action@v2
         with:
-          semgrep --config "p/default" && semgrep ci --sarif --output=semgrep.sarif
           
           # == Optional settings in the `with:` block
 
