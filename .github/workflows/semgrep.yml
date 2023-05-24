@@ -104,17 +104,8 @@ jobs:
       - uses: returntocorp/semgrep-action@v1
         with:
           config: >- # more at semgrep.dev/explore
-            ${{ inputs.config }}
-            ${{ github.event.inputs.config }}
-            p/security-audit
-            p/secrets
-            p/semgrep-misconfigurations
-            p/semgrep-rule-lints
-            p/github-actions
-            p/ci
-            p/owasp-top-ten
-            p/command-injection
-            p/sql-injection
+            $ semgrep --config "p/default" && semgrep ci --sarif --output=semgrep.sarif
+          
           # == Optional settings in the `with:` block
 
           # Instead of `config:`, use rules set in Semgrep App.
