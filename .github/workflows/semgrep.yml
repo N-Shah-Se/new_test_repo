@@ -25,10 +25,10 @@ jobs:
     steps:
       # Checkout project source
       - uses: actions/checkout@v3
-      - run: semgrep --config "p/default" && semgrep ci --sarif --output=semgrep.sarif && pwd
+      - run: semgrep --config "p/default" && semgrep ci --sarif --output=semgrep.sarif && pwd && ls
       # Upload SARIF file generated in previous step
       - name: Upload SARIF file
         uses: github/codeql-action/upload-sarif@v2
         with:
-          sarif_file: /home/runner/work/_actions/semgrep.sarif
+          sarif_file: /__w/new_test_repo/new_test_repo/semgrep.sarif
         if: always()
