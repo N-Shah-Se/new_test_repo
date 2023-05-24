@@ -101,8 +101,7 @@ jobs:
             wget -O .semgrepignore https://raw.githubusercontent.com/returntocorp/semgrep/develop/cli/src/semgrep/templates/.semgrepignore
           fi
           echo semgrep.sarif >> .semgrepignore
-      - uses: returntocorp/semgrep-action@v2
-        with:
+      - run: pip3 install semgrep && semgrep --config "p/default" && semgrep ci --sarif --output=semgrep.sarif &&  generateSarif="1"
           
           # == Optional settings in the `with:` block
 
@@ -116,7 +115,7 @@ jobs:
           # Instead, just collect findings for semgrep.dev/manage/findings
           #auditOn: push
           #auditOn: push workflow_dispatch cron
-          generateSarif: "1"
+         
 
         # Change job timeout (default is 1800 seconds; set to 0 to disable)
         #env:
