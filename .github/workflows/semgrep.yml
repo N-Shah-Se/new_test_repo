@@ -25,8 +25,7 @@ jobs:
     steps:
       # Checkout project source
       - uses: actions/checkout@v3
-      - run: wget https://github.com/github/codeql-action/releases/latest/download/codeql-bundle-linux64.tar.gz && tar -xvzf ./codeql-bundle-linux64.tar.gz
-      - run: semgrep --config "p/default" && semgrep ci --sarif > scan_results.sarif  && pwd && ls
+      - run: semgrep --config "p/default" && semgrep ci --sarif --output=scan_results.sarif  && pwd && ls
       # Upload SARIF file generated in previous step
       - name: Upload SARIF file
         uses: github/codeql-action/upload-sarif@v2
